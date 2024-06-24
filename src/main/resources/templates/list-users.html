@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Main Page</title>
+  <!-- BOOTSTRAP -->
+  <link th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container" style="height:85vh; padding-top: 20px;">
+    <div>
+      <h1>Lista de Usuarios</h1>
+    </div>
+
+
+    <div class="card">
+      <div class="card-header">
+        Usuarios
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered table-striped">
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Acciones</th>
+          </tr>
+          <tr th:each="usr: ${users}">
+            <td th:text="${usr.id}"></td>
+            <td th:text="${usr.name}"></td>
+            
+            <td>
+              <a class="btn btn-info" th:href="@{'/editar/' + ${usr.id}}">Editar</a>
+              <a class="btn btn-danger" th:href="@{'/eliminar/' + ${usr.id}}"
+              onclick="return confirm('Seguro que deseas eliminar este registro?')"
+              >
+              Eliminar</a>
+            </td>
+            
+          </tr>
+        </table>
+        <a class="btn btn-dark" href="/nuevo">Agregar Usuario</a>
+      </div>
+    </div>
+
+  </div>
+<!-- Footer 1 - Bootstrap Brain Component -->
+<footer class="footer">
+
+  <!-- Copyright - Bootstrap Brain Component -->
+  <section class="bg-light py-5 py-xl-8 py-xxl-9 border-top border-light">
+    <div class="container overflow-hidden">
+      <div class="row gy-5 gy-md-0">
+        <div class="col-xs-12 col-md-7 order-1 order-md-0">
+          <div class="copyright text-center text-md-start">
+            &copy; 2024. Parcial #1.
+          </div>
+          <div class="credits text-secondary text-center text-md-start mt-2 fs-7">
+              Desarrollo de Aplicaciones Web
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-md-5 order-0 order-md-1">
+          <h6>Douglas Isaac Barrera Magaña - BM22025</h6>
+          <h6>Ricardo Enrique Heredia Ramos - HR21024</h6>
+          <h6>Alejandro Daniel Avalos Santamaria - AS19014</h6>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</footer>
+</body>
+
+</html>
